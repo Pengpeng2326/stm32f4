@@ -8,11 +8,11 @@ extern MData mData;
 extern GyroData gData;
 
 volatile static uint8_t int0Happened = 0, int1Happened=0;
-static const uint8_t intBased = 1;
+static const uint8_t intBased = 0;
 
 
 static const uint8_t gameOn = 0;
-static const uint8_t freeFallOn = 1;
+static const uint8_t freeFallOn = 0;
 
 
 static uint8_t random_number_0_to_3()
@@ -44,9 +44,9 @@ int main(void)
     init_I2C1();
 
     my_printf("Begin ...\r\n");
-
+    //while(1);
     GYRO_init();
-    XM_init();
+    //XM_init();
 
     if (freeFallOn) XM_int1_init();
     if (gameOn) GYRO_int1_init();
@@ -83,7 +83,7 @@ int main(void)
 
             GYRO_update(0);
             delay_ms(10);
-            XM_update(0);
+            //XM_update(0);
             delay_ms(10);
         }
 
